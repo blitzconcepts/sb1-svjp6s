@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model BusinessProfile {
+  id              String   @id @default(cuid())
+  businessName    String
+  website         String?
+  phone           String?
+  email           String?
+  workingHours    String?
+  address         String?
+  socialProfiles  String?
+  bannerImage     String?
+  videoBackground String?
+  favicon         Boolean  @default(false)
+  backgroundColor String?
+  iconColor       String?
+  textColor       String?
+  logo            String?
+  qrCode          String?
+  shortUrl        String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model LeadForm {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model Portfolio {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  imageUrl    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
